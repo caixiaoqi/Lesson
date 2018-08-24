@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  1.预编译过程中this指向window
+  2.全局作用域里this指向window
+  3.call、apply可以改变this指向
+  4.其实谁调用这段上下文，谁就是this
+  <script>
+    var name='222';
+    var a={
+      name:'111',
+      say(){
+      console.log(this.name);
+      }
+    }
+    var b={
+      name :'333',
+      say(fun){
+        fun()
+      }
+    }
+    b.say(a.say);//222
+    
+  </script>
+</body>
+</html>

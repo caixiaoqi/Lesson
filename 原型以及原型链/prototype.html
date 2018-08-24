@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  1.原型是构造函数构造出来的所有对象的公共祖先
+  2.构造函数的constructor其实在函数创建的时候就已经存在，指向这个构造函数
+  3.每个函数内置的[[prototype]]属性指向他的原型，浏览器暴露出来叫__proto__（两个-）
+  4.所有的对象都继承自Object.prototype?
+  Object.create()里面必须有参数，里面可以传入null，所以上面这句话是错的
+  里面也不能放原始值，只能放对象
+ <script>
+    //大驼峰式
+    function Person(){
+      this.name="yuqi"
+    }
+    Person.prototype.sex='nan';
+    var person1=new Person();
+    //函数在出生的时候就已经被定义好的
+
+    var o=Object.create(null);
+
+    Object.prototype.toString.call([123])
+  </script>
+</body>
+</html>

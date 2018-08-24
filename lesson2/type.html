@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  类型转换
+  case语句--break
+  显示类型转换
+  Number();  null-0  undifined--NaN凡是转化不成的都变味NaN
+  parseInt(string,radix);
+  parseFloat(string);
+
+  String();
+  
+  Boolean();
+
+  toString();
+  谁.toStirng();
+
+  number.toString(radix);
+
+  二进制数转换为十进制
+
+  parseInt(num,2).toString(16);
+  2-----10-----16
+
+  隐式转换
+  isNaN()---内部Number()
+  ++ -- +(正) -(负)；没有运算之前，先调用Number（）
+  + 
+  * / % ----Number()
+  &&  ||  ！
+  == !=
+  >  如果全是字符串，比较编码,有一个是数字，将字符串转化为数字
+  <script>
+    var n=2
+    switch(n){
+      case 1: console.log('a');
+              break;
+      case 2: console.log('b');
+              break;
+      case true: console.log('c');
+              break;
+    }
+
+    var num=Number("123");
+    console.log(typeof(num)+": "+num)
+
+    parseInt('789.21a');
+    parseInt('67a89');  
+    parseInt('a');  //NaN
+    
+    Number(null);//0
+    null==0;//false
+    
+    a='abc';
+    a++;
+    typeof(a);    //number
+
+    typeof(a); //即使a没有定义，也不报错，返回字符串的“undefined”
+    typeof(typeof(a)); //string
+  </script>
+</body>
+</html>

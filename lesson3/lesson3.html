@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  解释性语言--单线程
+
+  1.执行之前--通篇扫描一下，看看有没有低级的语法错误,语法解析
+  2.预编译过程：
+    预编译发生在函数执行的前一刻，当然也发生在全局
+    1.创建AO对象
+    2.找形参和变量声明，将其作为AO的属性名，值为undefined。
+    3.将实参和形参相统一
+    4.找其中的函数声明，其作为作为对应属性名的值
+
+
+  
+  <script>
+    
+
+    function test(){
+      var a=b=3;//赋值从右到左,先是b=3，这时候没有var申明，他是全局对象的
+                //然后 var a=b;
+    }
+    test();
+    console.log(b);
+    console.log(a);
+
+
+//变量对象AO
+/*AO{
+  a:function(){},
+  b:undefined,
+  d:function(){}
+}*/
+    function fn(a){
+      console.log(a);
+      //function(){}
+      //变量提升，但是已经var了，所以不会完全执行，只执行a=123；
+      var a=123;
+      //123
+      console.log(a);
+      //函数已经提升了，不会再执行了
+      function a(){}
+      //123
+      console.log(a);
+      //123
+      var b=function(){};
+      //b从undefined编程function（）{}
+      console.log(b);
+
+      function d(){}
+      console.log(d);
+    }
+    fn(1);
+
+//全局状态下的变量对象就是全局对象
+/*
+Ao{
+  a:function(){}
+}
+*/
+var a=123;  //这里是123
+function a(){}//这里创建变量对象的时候，已经执行过了，所以不会在执行
+console.log(a);//123
+
+//有趣的题
+var x=1;
+if(function f(){}){
+  x+=typeof(f);
+}
+console.log(x)
+//有趣的题
+(window.foo||(window.foo="bar"))//少一个括号会报错因为||优先级高于=，(window.foo||window.foo="bar")
+console.log(foo);//'bar'
+  </script>
+</body>
+</html>

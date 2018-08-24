@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  函数也是对象
+  对象当然有属性
+  如name length
+  也有我们不能直接调用的属性
+  [[socpe]]
+  指的就是作用域，其中存储了运行期上下文的集合
+  函数每次执行的时候的执行器上下文都是不一样的
+  function test(){}
+  每次执行产生一个独一无二的执行上下文，用完就丢了，多次调用，多次产生
+
+  
+
+</body>
+
+<script>
+  (function(){
+    var a=3;
+    var b=4;
+    console.log(a,b);
+  }())
+  //立即执行函数出了执行完就被销毁，没有任何的差异了
+
+  //(function(){}());W3C建议第一种
+  //(function(){})();
+  //只有表达式才可以被执行
+  // function test(){
+
+  // }()  报错，因为这是函数声明，不是表达式
+  // var test=function(){
+
+  // }() 不会报错，因为这个是赋值表达式
+  //但是只要被执行，就会忽略表达式的名字
+    // var test=function(){
+
+  // }()   test现在被立即执行，test会被忽略，就会放弃表达式名字
+  if(function test(){}){
+  }
+  console.log(typeof test+1);//undefined1
+</script>
+</html>
